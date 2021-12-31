@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Barlow Condensed', sans-serif;
     }
 
+    ul {
+        list-style: none;
+    }
+
     h1 {
         font-size: 150px;
         color: var(--color-text-main);

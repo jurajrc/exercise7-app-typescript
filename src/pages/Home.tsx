@@ -9,7 +9,7 @@ import HomeBackMobile from '../assets/home/background-home-mobile.jpg'
 import { motion } from 'framer-motion'
 
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
         <StyleHome>
             <div className="home-left">
