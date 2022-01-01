@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+// Components
+import TemplateDestination from '../components/TemplateDestination'
+import { ItemData } from '../interfaces'
 // Style
 import styled from 'styled-components'
 // Data
@@ -14,153 +17,18 @@ const Destination: React.FC = () => {
     
     return (
         <StyleDestination>
-            <header>
-                <h3><span>01</span> Pick your dastination</h3>
-            </header>
-            <section>
-                <div className="left">
-                    <img src={allData.destinations[0].images.webp} alt="moon" />
+            
+            {allData.destinations.map((item: ItemData, key: number) => (
+                <div key={key} >
+                    <header>
+                        <h3><span>01</span> Pick your dastination</h3>
+                    </header>
+                    <TemplateDestination 
+                        itemDestination={item} 
+                        
+                    />
                 </div>
-                <div className="right">
-                    <div className="info">
-                        <div className="sbut-nav">
-                            <ul>
-                                <li>moon
-                                    <Line />
-                                </li>
-                                <li>mars</li>
-                                <li>europa
-                                    <Line />
-                                </li>
-                                <li>titan</li>
-                            </ul>
-                        </div>
-                        <h1>{allData.destinations[0].name}</h1>
-                        <p className='text'>{allData.destinations[0].description}</p>
-                        <div className="parameters">
-                            <div className="parameter">
-                                <p>Avg. distance</p>
-                                <span>{allData.destinations[0].distance}</span>
-                            </div>
-                            <div className="parameter">
-                                <p>Est. travel time</p>
-                                <span>{allData.destinations[0].travel}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <header>
-                <h3><span>01</span> Pick your dastination</h3>
-            </header>
-            <section>
-                <div className="left">
-                    <img src={allData.destinations[1].images.webp} alt="moon" />
-                </div>
-                <div className="right">
-                    <div className="info">
-                        <div className="sbut-nav">
-                            <ul>
-                                <li>moon
-                                    <Line />
-                                </li>
-                                <li>mars</li>
-                                <li>europa
-                                    <Line />
-                                </li>
-                                <li>titan</li>
-                            </ul>
-                        </div>
-                        <h1>{allData.destinations[1].name}</h1>
-                        <p className='text'>{allData.destinations[1].description}</p>
-                        <div className="parameters">
-                            <div className="parameter">
-                                <p>Avg. distance</p>
-                                <span>{allData.destinations[1].distance}</span>
-                            </div>
-                            <div className="parameter">
-                                <p>Est. travel time</p>
-                                <span>{allData.destinations[1].travel}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <header>
-                <h3><span>01</span> Pick your dastination</h3>
-            </header>
-            <section>
-                <div className="left">
-                    <img src={allData.destinations[2].images.webp} alt="moon" />
-                </div>
-                <div className="right">
-                    <div className="info">
-                        <div className="sbut-nav">
-                            <ul>
-                                <li>moon
-                                    <Line />
-                                </li>
-                                <li>mars</li>
-                                <li>europa
-                                    <Line />
-                                </li>
-                                <li>titan</li>
-                            </ul>
-                        </div>
-                        <h1>{allData.destinations[2].name}</h1>
-                        <p className='text'>{allData.destinations[2].description}</p>
-                        <div className="parameters">
-                            <div className="parameter">
-                                <p>Avg. distance</p>
-                                <span>{allData.destinations[2].distance}</span>
-                            </div>
-                            <div className="parameter">
-                                <p>Est. travel time</p>
-                                <span>{allData.destinations[2].travel}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <header>
-                <h3><span>01</span> Pick your dastination</h3>
-            </header>
-            <section>
-                <div className="left">
-                    <img src={allData.destinations[3].images.webp} alt="moon" />
-                </div>
-                <div className="right">
-                    <div className="info">
-                        <div className="sbut-nav">
-                            <ul>
-                                <li>moon
-                                    <Line />
-                                </li>
-                                <li>mars</li>
-                                <li>europa
-                                    <Line />
-                                </li>
-                                <li>titan</li>
-                            </ul>
-                        </div>
-                        <h1>{allData.destinations[3].name}</h1>
-                        <p className='text'>{allData.destinations[3].description}</p>
-                        <div className="parameters">
-                            <div className="parameter">
-                                <p>Avg. distance</p>
-                                <span>{allData.destinations[3].distance}</span>
-                            </div>
-                            <div className="parameter">
-                                <p>Est. travel time</p>
-                                <span>{allData.destinations[3].travel}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            ))}
         </StyleDestination>
     )
 }
@@ -195,78 +63,9 @@ const StyleDestination = styled.article`
             }
         }
     }
-    section {
-        display: flex;
-        width: 100%;
-        height: 72vh;
 
-        .left {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                margin-left: 20%;
-            }
-        }
-        .right {
-            width: 50%;
-            .info {
-                width: 70%;
-                padding-left: 10%;
-                padding-top: 6%;
-            }
-             ul {
-                 padding: none;
-                 display: flex;
-                 width: 65%;
-                 justify-content: space-between;
-                 
-                 li {
-                     position: relative;
-                     padding: .6em 0;
-                     text-transform: uppercase;
-                     letter-spacing: 2.7px;
-                 }
-             }
-             h1 {
-                 font-size: 6.25em;
-                 text-transform: uppercase;
-                 padding: 2.5rem 0;
-                 
-             }
-             .text {
-                padding-bottom: 2.5em;
-                border-bottom: 1px solid hsla(0, 0%, 100%, 0.25);
-                margin-bottom: 1em;
-             }
-             .parameters {
-                 display: flex;
-
-                 .parameter {
-                     width: 50%;
-                     text-transform: uppercase;
-                     p {
-                         font-size: 14px;
-                         letter-spacing: 2.2px;
-                     }
-                     span {
-                         font-size: 28px;
-                         font-family:  'Bellefair', serif;
-                     }
-                 }
-             }
-        }
-    }
+    
 `
-const Line = styled(motion.div)`
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background: #fff;
-`
+
 
 export default Destination
