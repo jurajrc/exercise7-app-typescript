@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 
         --color-text-light-blue: #d0d6f9;
         --color-text-main: #fff;
+        --color-back-primar: #0b0d17;
     }
 
 
@@ -19,14 +20,19 @@ const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         color: var(--color-text-main);
         font-family: 'Barlow Condensed', sans-serif;
+        background: var(--color-back-primar);
     }
 
     ul {
         list-style: none;
     }
+    a {
+        color: var(--color-text-main);
+        text-decoration: none;
+    }
 
     h1 {
-        font-size: 150px;
+        font-size: 9.375em;
         color: var(--color-text-main);
         font-family: 'Bellefair', serif;
         font-weight: 200;
@@ -40,7 +46,6 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         text-transform: uppercase;
         letter-spacing: 4.725px;
-        font-family: 'Barlow Condensed', sans-serif;
         color: var(--color-text-light-blue);
         @media (max-width: 768px) {
             font-size: 20px;
