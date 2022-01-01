@@ -1,30 +1,41 @@
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 // style
 import styled from 'styled-components'
 // Animation
 import { motion } from 'framer-motion'
 
+interface LinkName {
+    name: string;
+    pathname: string;
+    link: string;
+    linkNumber: number;
+}
+
+const LiLink = (props: LinkName) => {
+
+  return (
+    <li>
+        <Link to={props.link}><span>0{props.linkNumber}</span> {props.name}</Link>
+        <Line 
+            transition={{duration: 0.75}}
+            initial={{width: "0%"}}
+            animate={{width: props.pathname === props.link ? "100%" : "0%"}}
+        />
+        <LineHover className='link-hover'/>
+    </li>
+  )
+}
 
 const Nav: React.FC = () => {
+    const {pathname} = useLocation()
     return (
         <StyleNav>
             <ul>
-                <li>
-                    <span>00</span> Home
-                    <Line />
-                </li>
-                <li>
-                    <span>01</span> Destination
-                    <LineHover className='link-hover'/>
-                </li>
-                <li>
-                    <span>02</span> Crew
-                    <LineHover className='link-hover'/>
-                </li>
-                <li>
-                    <span>03</span> Technology
-                    <LineHover className='link-hover'/>
-                </li>
+                <LiLink pathname={pathname} link="/" linkNumber={0} name="Home"/>
+                <LiLink pathname={pathname} link="/destination" linkNumber={1} name="Destination" />
+                <LiLink pathname={pathname} link="/crew" linkNumber={2} name="Crew" />
+                <LiLink pathname={pathname} link="/technology" linkNumber={3} name="Technology" />
             </ul>
         </StyleNav>
     )
@@ -48,7 +59,9 @@ const StyleNav = styled.div`
             font-weight: 200;
             text-transform: uppercase;
             letter-spacing: 2.7px;
-            cursor: pointer;
+            a {
+                padding: 2em 0;
+            }
             &:hover .link-hover {
                 opacity: 1;
             }
