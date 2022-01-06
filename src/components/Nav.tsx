@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 // style
 import styled from 'styled-components'
+import { Line } from '../styles'
 // Animation
 import { motion } from 'framer-motion'
 
@@ -11,6 +12,8 @@ interface LinkName {
     link: string;
     linkNumber: number;
 }
+
+
 
 const LiLink = (props: LinkName) => {
 
@@ -29,11 +32,41 @@ const LiLink = (props: LinkName) => {
 
 const Nav: React.FC = () => {
     const {pathname} = useLocation()
+    
+
+    const isSubDestination = (path: string) => {
+      switch(path) {
+        case "/destination/moon":
+            return true;
+        case "/destination/mars":
+            return true;
+        case "/destination/europa":
+            return true;
+        case "/destination/titan":
+            return true;
+        default: 
+            return false
+        
+      }
+    }
+
+    
     return (
         <StyleNav>
             <ul>
                 <LiLink pathname={pathname} link="/" linkNumber={0} name="Home"/>
-                <LiLink pathname={pathname} link="/destination" linkNumber={1} name="Destination" />
+
+                {/* <LiLink pathname={pathname} link={() => isSubDestination(pathname)} linkNumber={1} name="Destination" /> */}
+                <li>
+                    <Link to="/destination/moon" ><span>01</span> Destination</Link>
+                    <Line 
+                        transition={{duration: 0.75}}
+                        initial={{width: "0%"}}
+                        animate={{width: isSubDestination(pathname) ? "100%" : "0%"}}
+                    />
+                    <LineHover className='link-hover'/>
+                </li>
+
                 <LiLink pathname={pathname} link="/crew" linkNumber={2} name="Crew" />
                 <LiLink pathname={pathname} link="/technology" linkNumber={3} name="Technology" />
             </ul>
@@ -78,14 +111,7 @@ const StyleNav = styled.div`
         }
     }
 `
-const Line = styled(motion.div)`
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 3px;
-    background: #fff;
-`
+
 const LineHover = styled(Line)`
     background: rgba(255, 255, 255, 0.5);
     opacity: 0;
