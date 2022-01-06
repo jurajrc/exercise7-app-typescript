@@ -1,46 +1,70 @@
 import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom';
 // Components
-import TemplateDestination from '../components/TemplateDestination'
-import { ItemData } from '../interfaces'
+
 // Style
 import styled from 'styled-components'
 // Data
 import data from '../data.json'
 // Image
 import imageBackDes from '../assets/destination/background-destination-desktop.jpg'
+import imageBackTablet from '../assets/destination/background-destination-tablet.jpg'
+import imageBackMobile from '../assets/destination/background-destination-mobile.jpg'
 // Animation
 import { motion } from 'framer-motion'
 
 const Destination: React.FC = () => {
     const [allData, setAllData] = useState(data)
-    console.log(allData.destinations);
     
     return (
         <StyleDestination>
             
-            {allData.destinations.map((item: ItemData, key: number) => (
-                <div key={key} >
-                    <header>
-                        <h3><span>01</span> Pick your dastination</h3>
-                    </header>
-                    <TemplateDestination 
-                        itemDestination={item} 
-                        
-                    />
-                </div>
-            ))}
+            <header>
+                <h3><span>01</span> Pick your dastination</h3>
+            </header>
+
+            <Outlet />
+
         </StyleDestination>
     )
 }
 
-const StyleDestination = styled.article`
+const StyleDestination = styled(motion.article)`
     width: 100%;
     min-height: 100vh;
     background: url(${imageBackDes}), #0b0d17;
     background-blend-mode: difference;
     background-position: center;
     background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-attachment: fixed;
+    @media (max-width: 1000px) {
+        height: 60em;
+    }
+    @media (max-width: 768px) {
+        height: 57em;
+        background: url(${imageBackTablet}), #0b0d17;
+        background-blend-mode: difference;
+        background-position: center;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-attachment: fixed;
+    }
+    @media (max-width: 450px) {
+        height: 55em;
+        background: url(${imageBackMobile}), #0b0d17;
+        background-blend-mode: difference;
+        background-position: center;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-attachment: fixed;
+    }
 
     header {
         width: 100%;
@@ -49,8 +73,9 @@ const StyleDestination = styled.article`
         justify-content: flex-start;
         align-items: flex-end;
         h3 {
+            width: 100%;
             font-size: 28px;
-            margin-left: 14vw;
+            padding-left: 14vw;
             letter-spacing: 4.72px;
             font-family: 'Barlow Condensed', sans-serif;
             text-transform: uppercase;
@@ -62,6 +87,18 @@ const StyleDestination = styled.article`
                 margin-right: 0.5em;
             }
         }
+        
+        @media (max-width: 1000px) {
+            height: 20vh;
+            h3 {
+                font-size: 20px;
+                margin-left: 6vw;
+            }
+        }
+        @media (max-width: 768px) {
+            height: 15vh;
+        }
+
     }
 
     
