@@ -3,7 +3,7 @@ import React from 'react'
 import SubNavCrew from './SubNavCrew'
 // Styled 
 import styled from 'styled-components'
-// data
+// data iterface
 import { ItemDataCrew } from '../interfaces'
 
 interface Props {
