@@ -8,12 +8,13 @@ import styled from 'styled-components'
 
 // Image
 import imageBackTech from '../assets/technology/background-technology-desktop.jpg'
+import { Outlet } from 'react-router-dom'
 
 const Technology: React.FC = () => {
     return (
         <StyleTechnoligy>
             <Heading numSite='3' heading='Space launch 101' />
-
+            <Outlet />
         </StyleTechnoligy>
     )
 }
