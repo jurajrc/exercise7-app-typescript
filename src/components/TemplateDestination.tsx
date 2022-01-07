@@ -22,28 +22,28 @@ const TemplateDestination = ({ itemDestination }: Props) => {
         <StyleSection>
             <div className="left">
                     <img src={images.webp} alt={name} />
-                </div>
-                <div className="right">
-                    <div className="info">
-                        <div className="sub-nav">
-                            <SubNavDestination />
+            </div>
+            <div className="right">
+                <div className="info">
+                    <div className="sub-nav">
+                        <SubNavDestination />
+                    </div>
+                    <h1>{name}</h1>
+                    <div className='text'>
+                        <p>{description}</p>
+                    </div>
+                    <div className="parameters">
+                        <div className="parameter">
+                            <p>Avg. distance</p>
+                            <span>{distance}</span>
                         </div>
-                        <h1>{name}</h1>
-                        <div className='text'>
-                            <p>{description}</p>
-                        </div>
-                        <div className="parameters">
-                            <div className="parameter">
-                                <p>Avg. distance</p>
-                                <span>{distance}</span>
-                            </div>
-                            <div className="parameter">
-                                <p>Est. travel time</p>
-                                <span>{travel}</span>
-                            </div>
+                        <div className="parameter">
+                            <p>Est. travel time</p>
+                            <span>{travel}</span>
                         </div>
                     </div>
                 </div>
+            </div>
         </StyleSection>
     )
 }
@@ -126,9 +126,7 @@ const StyleSection = styled(motion.section)`
                 @media (max-width: 1000px) {
                     width: 100%;
                     font-size: 1em;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+                    text-align: center;
                 }
                 @media (max-width: 500px) {
                     font-size: .93em;
@@ -175,13 +173,6 @@ const StyleSection = styled(motion.section)`
         }
     
 `
-// const Line = styled(motion.div)`
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     width: 100%;
-//     height: 3px;
-//     background: #fff;
-// `
+
 
 export default TemplateDestination
