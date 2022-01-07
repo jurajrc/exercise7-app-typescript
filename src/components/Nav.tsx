@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 // style
 import styled from 'styled-components'
 import { Line } from '../styles'
 // Animation
-import { motion } from 'framer-motion'
+//import { motion } from 'framer-motion'
 
 interface LinkName {
     name: string;
@@ -33,7 +33,7 @@ const LiLink = (props: LinkName) => {
 const Nav: React.FC = () => {
     const {pathname} = useLocation()
     
-
+    // select subLink Destination
     const isSubDestination = (path: string) => {
       switch(path) {
         case "/destination/moon":
@@ -43,6 +43,23 @@ const Nav: React.FC = () => {
         case "/destination/europa":
             return true;
         case "/destination/titan":
+            return true;
+        default: 
+            return false
+        
+      }
+    }
+
+    //select subLink Crew
+    const isSubCrew = (path: string) => {
+      switch(path) {
+        case "/crew/commander":
+            return true;
+        case "/crew/specialist":
+            return true;
+        case "/crew/pilot":
+            return true;
+        case "/crew/engineer":
             return true;
         default: 
             return false
@@ -67,7 +84,17 @@ const Nav: React.FC = () => {
                     <LineHover className='link-hover'/>
                 </li>
 
-                <LiLink pathname={pathname} link="/crew" linkNumber={2} name="Crew" />
+                {/* <LiLink pathname={pathname} link="/crew/commander" linkNumber={2} name="Crew" /> */}
+                <li>
+                    <Link to="/crew/commander" ><span>02</span> Crew</Link>
+                    <Line 
+                        transition={{duration: 0.75}}
+                        initial={{width: "0%"}}
+                        animate={{width: isSubCrew(pathname) ? "100%" : "0%"}}
+                    />
+                    <LineHover className='link-hover'/>
+                </li>
+
                 <LiLink pathname={pathname} link="/technology" linkNumber={3} name="Technology" />
             </ul>
         </StyleNav>
