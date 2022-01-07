@@ -24,11 +24,14 @@ const StyleHeader = styled.header`
     h3 {
         width: 100%;
         font-size: 28px;
-        padding-left: 14vw;
+        padding-left: 10%;
         letter-spacing: 4.72px;
         font-family: 'Barlow Condensed', sans-serif;
         text-transform: uppercase;
         font-weight: 200;
+        @media (max-width: 768px) {
+            padding-left: 3%;
+        }
         span {
             letter-spacing: 4.72;
             color: rgba(255, 255, 255, 0.25);
@@ -38,14 +41,24 @@ const StyleHeader = styled.header`
     }
         
     @media (max-width: 1000px) {
-        height: 20vh;
+        height: 22vh;
         h3 {
             font-size: 20px;
             margin-left: 6vw;
         }
     }
     @media (max-width: 768px) {
-        height: 15vh;
+        height: 8em;
+    }
+    @media (max-width: 450px) {
+        height: 6em;
+        h3 {
+            padding-left: 0;
+            margin-left: 0;
+            text-align: center;
+            font-size: 1em;
+            letter-spacing: 2.7px;
+        }
     }
 `
 
