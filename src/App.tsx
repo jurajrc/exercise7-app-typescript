@@ -6,12 +6,13 @@ import Home from './pages/Home';
 import Destination from './pages/Destination';
 import Crew from './pages/Crew';
 import Technology from './pages/Technology';
-// Data
-import data from './data.json'
-// Style
 import GlobalStyle from './components/GlobalStyle';
 import TemplateDestination from './components/TemplateDestination';
 import TemplateCrew from './components/TemplateCrew';
+import TemplateTechnology from './components/TemplateTechnology';
+// Data
+import data from './data.json'
+// Style
 
 function App() {
 
@@ -42,7 +43,9 @@ function App() {
 
 
           <Route path="/technology" element={<Technology />} >
-            
+            <Route path="/technology/vehicle" element={<TemplateTechnology itemTech={allData.technology[0]} />} />
+            <Route path="/technology/spaceport" element={<TemplateTechnology itemTech={allData.technology[1]} />} />
+            <Route path="/technology/capsule" element={<TemplateTechnology itemTech={allData.technology[2]} />} />
           </Route>
         </Routes>
         
