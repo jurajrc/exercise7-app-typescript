@@ -1,3 +1,4 @@
+// Props for Destination
 export interface ItemData {
     name: string;
     images: {
@@ -7,4 +8,15 @@ export interface ItemData {
     description: string;
     distance: string;
     travel: string;
+}[]
+
+// Props for Crew
+export interface ItemDataCrew {
+    name: string;
+    images: {
+        png: string;
+        webp: string;
+    };
+    role: string;
+    bio: string;
 }[]
