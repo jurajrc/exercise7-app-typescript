@@ -20,3 +20,13 @@ export interface ItemDataCrew {
     role: string;
     bio: string;
 }[]
+
+// Props for Technology 
+export interface ItemTech {
+    name: string;
+    images: {
+        portrait: string;
+        landscape: string;
+    };
+    description: string;
+}[]
