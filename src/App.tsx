@@ -11,10 +11,11 @@ import data from './data.json'
 // Style
 import GlobalStyle from './components/GlobalStyle';
 import TemplateDestination from './components/TemplateDestination';
+import TemplateCrew from './components/TemplateCrew';
 
 function App() {
 
-  const [allData, setAllData] = useState(data)
+  const [allData] = useState(data)
 
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/destination/" element={<Destination />} >
             <Route path="/destination/moon" element={<TemplateDestination itemDestination={allData.destinations[0]} />} />
             <Route path="/destination/mars" element={<TemplateDestination itemDestination={allData.destinations[1]} />} />
@@ -31,8 +33,17 @@ function App() {
             <Route path="/destination/titan" element={<TemplateDestination itemDestination={allData.destinations[3]} />} />
           </Route>
 
-          <Route path="/crew" element={<Crew />} />
-          <Route path="/technology" element={<Technology />} />
+          <Route path="/crew/" element={<Crew />} >
+            <Route path="/crew/commander" element={<TemplateCrew itemCrew={allData.crew[0]} />} />
+            <Route path="/crew/specialist" element={<TemplateCrew itemCrew={allData.crew[1]} />} />
+            <Route path="/crew/pilot" element={<TemplateCrew itemCrew={allData.crew[2]} />} />
+            <Route path="/crew/engineer" element={<TemplateCrew itemCrew={allData.crew[3]} />} />
+          </Route>
+
+
+          <Route path="/technology" element={<Technology />} >
+            
+          </Route>
         </Routes>
         
       </div>
