@@ -1,15 +1,19 @@
 import React from 'react'
+// Components
+import Heading from '../components/Heading'
+
 // Style
 import styled from 'styled-components'
 // Data
-import data from '../data.json'
+
 // Image
 import imageBackTech from '../assets/technology/background-technology-desktop.jpg'
 
 const Technology: React.FC = () => {
     return (
         <StyleTechnoligy>
-            <h1>Techonology</h1>
+            <Heading numSite='3' heading='Space launch 101' />
+
         </StyleTechnoligy>
     )
 }
@@ -23,14 +27,7 @@ const StyleTechnoligy = styled.article`
     background-size: cover;
     background-attachment: fixed;
 
-    header {
-        width: 100%;
-        height: 28vh;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-        
-    }
+   
 `
 
 export default Technology
