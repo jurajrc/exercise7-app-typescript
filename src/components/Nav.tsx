@@ -67,6 +67,21 @@ const Nav: React.FC = () => {
       }
     }
 
+    //select subLink Crew
+    const isSubTechnology = (path: string) => {
+      switch(path) {
+        case "/technology/vehicle":
+            return true;
+        case "/technology/spaceport":
+            return true;
+        case "/technology/capsule":
+            return true;
+        default: 
+            return false
+        
+      }
+    }
+
     
     return (
         <StyleNav>
@@ -95,7 +110,17 @@ const Nav: React.FC = () => {
                     <LineHover className='link-hover'/>
                 </li>
 
-                <LiLink pathname={pathname} link="/technology" linkNumber={3} name="Technology" />
+                {/* <LiLink pathname={pathname} link="/technology" linkNumber={3} name="Technology" /> */}
+
+                <li>
+                    <Link to="/technology/vehicle" ><span>03</span> Technology</Link>
+                    <Line 
+                        transition={{duration: 0.75}}
+                        initial={{width: "0%"}}
+                        animate={{width: isSubTechnology(pathname) ? "100%" : "0%"}}
+                    />
+                    <LineHover className='link-hover'/>
+                </li>
             </ul>
         </StyleNav>
     )
