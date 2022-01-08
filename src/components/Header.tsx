@@ -7,8 +7,16 @@ import styled from 'styled-components'
 import path from '../assets/header-path.svg'
 // Animation
 import { motion } from 'framer-motion'
+// Redux
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '..'
+
 
 const Header: React.FC = () => {
+
+    const isOpenNav = useSelector((state: RootState) => state.isOpenNav)
+    const dispatch = useDispatch()
+
     return (
         <StyleHeader>
             <div className="icon">
@@ -16,11 +24,11 @@ const Header: React.FC = () => {
             </div>
             <LineHeader className="line"></LineHeader>
 
-            {/* <Burger onClick={() => dispatch({ type: 'OPEN_IS' })}>
+            <Burger onClick={() => dispatch({ type: 'OPEN_IS' })}>
                 <Line1 className={isOpenNav ? "l1" : ""}/>
                 <Line2 className={isOpenNav ? "l2" : ""}/>
                 <Line3 className={isOpenNav ? "l3" : ""}/>
-            </Burger> */}
+            </Burger>
 
             <Nav />
         </StyleHeader>
@@ -37,6 +45,10 @@ const StyleHeader = styled.header`
     justify-content: space-between;
     align-items: center;
 
+    .open-nav {
+        transform: translateX(0%);
+    }
+
     @media (max-width: 768px) {
         top: 0;
     }
@@ -50,6 +62,12 @@ const StyleHeader = styled.header`
         img {
             width: 100%;
             height: 100%;
+        }
+        @media (max-width: 650px) {
+            margin: 1em;
+        }
+        @media (max-width: 450px) {
+            margin-left: 1em;
         }
     }
 `
@@ -71,6 +89,7 @@ const Burger = styled.div`
     right: 1.8em;
     cursor: pointer;
     display: none;
+    z-index: 10;
     @media screen and (max-width: 650px) {
         display: block;
     }
