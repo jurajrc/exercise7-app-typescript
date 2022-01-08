@@ -118,10 +118,12 @@ const Nav: React.FC = () => {
                     <LineHover className='link-hover'/>
                 </li>
             </ul>
+
+            
         </StyleNav>
     )
 }
-const StyleNav = styled.div`
+const StyleNav = styled.nav`
     width: 55%;
     padding: 0 2em;
     background: rgba(255, 255, 255, 0.04);
