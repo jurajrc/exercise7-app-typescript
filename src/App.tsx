@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // Components
+import GlobalStyle from './components/GlobalStyle';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Destination from './pages/Destination';
 import Crew from './pages/Crew';
 import Technology from './pages/Technology';
-import GlobalStyle from './components/GlobalStyle';
 import TemplateDestination from './components/TemplateDestination';
 import TemplateCrew from './components/TemplateCrew';
 import TemplateTechnology from './components/TemplateTechnology';
@@ -40,7 +40,6 @@ function App() {
             <Route path="/crew/pilot" element={<TemplateCrew itemCrew={allData.crew[2]} />} />
             <Route path="/crew/engineer" element={<TemplateCrew itemCrew={allData.crew[3]} />} />
           </Route>
-
 
           <Route path="/technology" element={<Technology />} >
             <Route path="/technology/vehicle" element={<TemplateTechnology itemTech={allData.technology[0]} />} />

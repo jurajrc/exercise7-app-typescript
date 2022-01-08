@@ -14,9 +14,8 @@ interface LinkName {
 }
 
 
-
+// šablona pre link len neviem ako cez props dať vždy inu function
 const LiLink = (props: LinkName) => {
-
   return (
     <li>
         <Link to={props.link}><span>0{props.linkNumber}</span> {props.name}</Link>
@@ -33,7 +32,7 @@ const LiLink = (props: LinkName) => {
 const Nav: React.FC = () => {
     const {pathname} = useLocation()
     
-    // select subLink Destination
+    // active subLink Destination
     const isSubDestination = (path: string) => {
       switch(path) {
         case "/destination/moon":
@@ -46,11 +45,10 @@ const Nav: React.FC = () => {
             return true;
         default: 
             return false
-        
       }
     }
 
-    //select subLink Crew
+    // active subLink Crew
     const isSubCrew = (path: string) => {
       switch(path) {
         case "/crew/commander":
@@ -63,11 +61,10 @@ const Nav: React.FC = () => {
             return true;
         default: 
             return false
-        
       }
     }
 
-    //select subLink Crew
+    // active subLink Crew
     const isSubTechnology = (path: string) => {
       switch(path) {
         case "/technology/vehicle":
@@ -78,7 +75,6 @@ const Nav: React.FC = () => {
             return true;
         default: 
             return false
-        
       }
     }
 
@@ -152,6 +148,7 @@ const StyleNav = styled.div`
             }
             @media (max-width: 768px) {
                 font-size: 14px;
+                letter-spacing: 2.36px;
             }
 
             span {
