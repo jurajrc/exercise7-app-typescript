@@ -15,7 +15,7 @@ const LinkRepeat = ({path, pathName, name}: LinkName) => {
         <motion.li
             transition={{duration: 0.3}}
             initial={{background: "transparent"}}
-            animate={{background: path === pathName ? "#fff" : "transparent"}}
+            animate={{background: path === pathName ? "white" : "transparent"}}
         >
             <NavLink to={path}>{name}</NavLink>
         </motion.li>
