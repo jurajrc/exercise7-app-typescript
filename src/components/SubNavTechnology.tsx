@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation, NavLink } from 'react-router-dom'
+import { useLocation, NavLink } from 'react-router-dom'
 // style
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
@@ -36,6 +36,11 @@ const SubNavTechnology = () => {
 const StyleUl = styled.ul`
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+    }
+
     li {
         width: 5em;
         height: 5em;
@@ -48,6 +53,18 @@ const StyleUl = styled.ul`
         font-family: 'Bellefair', serif;
         margin: 0.8em 0;
 
+        @media (max-width: 768px) {
+            margin: 0.5em;
+            width: 3.75em;
+            height: 3.75em;
+        }
+
+        @media (max-width: 450px) {
+            margin: 0.5em;
+            width: 2.5em;
+            height: 2.5em;
+        }
+
         &:hover {
             border: 1px solid rgba(255, 255, 255);
         }
@@ -58,8 +75,16 @@ const StyleUl = styled.ul`
             text-align: center;
             width: 100%;
             height: 100%;
-            color: white
 
+            color: white;
+            @media (max-width: 768px) {
+                font-size: 1.5em;
+            }
+
+            @media (max-width: 450px) {
+                font-size: 1em;
+                line-height: 2.6em;
+            }
         }
 
         .active {
