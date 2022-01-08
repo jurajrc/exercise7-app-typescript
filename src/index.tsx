@@ -4,12 +4,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom'
+// Redux
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import allReducers from './reducers';
+
+const store = createStore(
+  allReducers
+)
+
+// https://react-redux.js.org/using-react-redux/usage-with-typescript
+export type RootState = ReturnType<typeof store.getState>
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store} >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
