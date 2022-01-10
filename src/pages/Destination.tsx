@@ -13,12 +13,15 @@ import imageBackTablet from '../assets/destination/background-destination-tablet
 import imageBackMobile from '../assets/destination/background-destination-mobile.jpg'
 // Animation
 import { motion } from 'framer-motion'
+import { pageAnimate } from '../animations'
 
 const Destination: React.FC = () => {
     
     
     return (
-        <StyleDestination>
+        <StyleDestination
+            
+        >
             
             <Heading numSite='1' heading='Pick your destination' />
 

@@ -1,12 +1,12 @@
 import React from 'react'
+import SubNavDestination from './SubNavDestination'
 // Style
 import styled from 'styled-components'
-// Images
-//import destinationImage from '../assets/destination/background-destination-desktop.jpg'
-// Animatio
+// Animation
 import { motion } from 'framer-motion'
+import { pageAnimate } from '../animations'
+// Interface
 import { ItemData } from '../interfaces'
-import SubNavDestination from './SubNavDestination'
 
 interface Props {
     itemDestination: ItemData
@@ -19,15 +19,22 @@ const TemplateDestination = ({ itemDestination }: Props) => {
     
     
     return (
-        <StyleSection>
+        <StyleSection
+        
+        >
             <div className="left">
-                    <img src={images.webp} alt={name} />
+                    <motion.img
+                    variants={pageAnimate}
+                    initial="hidden"
+                    animate="show"
+                    exit="exit"
+                      src={images.webp} alt={name} />
             </div>
             <div className="right">
                 <div className="info">
-                    <div className="sub-nav">
+                    <motion.div className="sub-nav" initial={false}>
                         <SubNavDestination />
-                    </div>
+                    </motion.div>
                     <h1>{name}</h1>
                     <div className='text'>
                         <p>{description}</p>

@@ -4,8 +4,9 @@ import Heading from '../components/Heading'
 
 // Style
 import styled from 'styled-components'
-// Data
-
+// Animation
+import { motion } from 'framer-motion'
+import { pageAnimate } from '../animations'
 // Image
 import imageBackTechDesktop from '../assets/technology/background-technology-desktop.jpg'
 import imageBackTechTablet from '../assets/technology/background-technology-tablet.jpg'
@@ -14,14 +15,19 @@ import { Outlet } from 'react-router-dom'
 
 const Technology: React.FC = () => {
     return (
-        <StyleTechnoligy>
+        <StyleTechnoligy
+            variants={pageAnimate}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+        >
             <Heading numSite='3' heading='Space launch 101' />
             <Outlet />
         </StyleTechnoligy>
     )
 }
 
-const StyleTechnoligy = styled.article`
+const StyleTechnoligy = styled(motion.article)`
     width: 100%;
     min-height: 100vh;
     background: url(${imageBackTechDesktop}), #0b0d17;

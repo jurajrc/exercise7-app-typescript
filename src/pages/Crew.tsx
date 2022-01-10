@@ -5,8 +5,9 @@ import Heading from '../components/Heading'
 
 // Style
 import styled from 'styled-components'
-// Data
-
+// Animation
+import { motion } from 'framer-motion'
+import { pageAnimate } from '../animations'
 // Image
 import imageBackDesktop from '../assets/crew/background-crew-desktop.jpg'
 import imageBackTablet from '../assets/crew/background-crew-tablet.jpg'
@@ -14,13 +15,18 @@ import imageBackMobile from '../assets/crew/background-crew-mobile.jpg'
 
 const Crew: React.FC = () => {
     return (
-        <StyleCrew>
+        <StyleCrew
+            variants={pageAnimate}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+        >   
             <Heading numSite='2' heading='Meet your crew' />
             <Outlet />
         </StyleCrew>
     )
 }
-const StyleCrew = styled.article`
+    const StyleCrew = styled(motion.article)`
     width: 100%;
     min-height: 100vh;
     background: url(${imageBackDesktop}), #0b0d17;

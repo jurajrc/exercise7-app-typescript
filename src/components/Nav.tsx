@@ -16,6 +16,7 @@ interface LinkName {
     link: string;
     linkNumber: number;
     close: () => void;
+    isSub?: (path: string) => boolean;
 }
 
 
@@ -31,12 +32,8 @@ const LiLink = (props: LinkName) => {
             initial={{width: "0%"}}
             animate={{width: props.pathname === props.link ? "100%" : "0%"}}
         />
-        <LineRight 
-            className='line-right'
-            transition={{duration: 0.75}}
-            initial={{height: "0%"}}
-            animate={{height: props.pathname === props.link ? "55%" : "0"}}
-        />
+        {props.pathname === "/" && <LineRight />}
+        <LineHoverRight className='link-hover-right'/>
         <LineHover className='link-hover'/>
     </li>
   )
@@ -104,7 +101,7 @@ const Nav: React.FC = () => {
             <ul>
                 <LiLink pathname={pathname} link="/" linkNumber={0} name="Home" close={closeNav} />
 
-                {/* <LiLink pathname={pathname} link={() => isSubDestination(pathname)} linkNumber={1} name="Destination" /> */}
+                {/* <LiLink pathname={pathname} link="/destination/moon" linkNumber={1} name="Destination" close={closeNav} isSub={() => isSubDestination(pathname)} /> */}
                 <li onClick={closeNav} >
                     <Link to="/destination/moon" ><span>01</span> Destination</Link>
                     <Line 
@@ -114,6 +111,7 @@ const Nav: React.FC = () => {
                         animate={{width: isSubDestination(pathname) ? "100%" : "0%"}}
                     />
                     {isSubDestination(pathname) && <LineRight />}
+                    <LineHoverRight className='link-hover-right'/>
                     <LineHover className='link-hover'/>
                 </li>
 
@@ -127,6 +125,7 @@ const Nav: React.FC = () => {
                         animate={{width: isSubCrew(pathname) ? "100%" : "0%"}}
                     />
                     {isSubCrew(pathname) && <LineRight />}
+                    <LineHoverRight className='link-hover-right'/>
                     <LineHover className='link-hover'/>
                 </li>
 
@@ -141,6 +140,7 @@ const Nav: React.FC = () => {
                         animate={{width: isSubTechnology(pathname) ? "100%" : "0%"}}
                     />
                     {isSubTechnology(pathname) && <LineRight />}
+                    <LineHoverRight className='link-hover-right'/>
                     <LineHover className='link-hover'/>
                 </li>
             </ul>
@@ -208,6 +208,9 @@ const StyleNav = styled.nav`
                     display: block;
                     padding: 1.4em 0;
                 }
+                &:hover .link-hover-right {
+                    opacity: 1;
+                }
                 span {
                     display: inline-block;
                 }
@@ -228,10 +231,21 @@ const LineRight = styled(motion.div)`
         display: none;
     }
 `
+const LineHoverRight = styled(LineRight)`
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: 0.3s all ease;
+    @media (min-width: 650px) {
+        display: none;
+    }
+`
 const LineHover = styled(Line)`
     background: rgba(255, 255, 255, 0.5);
     opacity: 0;
     transition: 0.3s all ease;
+    @media (max-width: 650px) {
+        display: none;
+    }
 `
 
 export default Nav
